@@ -1,4 +1,4 @@
-import logging
+import logging, warnings
 from datetime import datetime
 from collections import namedtuple
 from typing import Any, Dict, List, Union
@@ -37,6 +37,8 @@ engine = create_engine("mysql+mysqldb://{user}:{password}@{host}:{port}/{db}?cha
                                password=quote_plus(db_password),  # password for user
                                host=db_host,
                                port=db_port))
+
+warnings.filterwarnings('ignore', category=UserWarning, message='pandas only support SQLAlchemy connectable')
 
 # Set up queries array from configuration file
 CRON_QUERY_FILE = settings.CRON_QUERY_FILE

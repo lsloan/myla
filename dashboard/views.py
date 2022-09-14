@@ -1,6 +1,8 @@
+
 import json
 import logging
 import math
+import warnings
 from collections import namedtuple
 from datetime import timedelta
 from json import JSONDecodeError
@@ -27,6 +29,9 @@ from dashboard.settings import COURSES_ENABLED, RESOURCE_VALUES, RESOURCE_VALUES
     RESOURCE_ACCESS_CONFIG
 
 logger = logging.getLogger(__name__)
+
+warnings.filterwarnings('ignore', category=UserWarning, message='pandas only support SQLAlchemy connectable')
+
 # strings for construct resource download url
 
 CANVAS_FILE_ID_NAME_SEPARATOR = "|"

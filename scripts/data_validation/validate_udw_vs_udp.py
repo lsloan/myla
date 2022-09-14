@@ -1,9 +1,13 @@
 import os
 import logging
+import warnings
 
 import hjson, json
 import pandas as pd
 from sqlalchemy import create_engine
+
+
+warnings.filterwarnings('ignore', category=UserWarning, message='pandas only support SQLAlchemy connectable')
 
 logging.basicConfig()
 logger = logging.getLogger(__name__)
